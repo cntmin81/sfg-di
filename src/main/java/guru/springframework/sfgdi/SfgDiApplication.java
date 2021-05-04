@@ -16,8 +16,8 @@ public class SfgDiApplication {
 		// MyController를 직접 생성(new)하지 않아도, context에의해 생성되어 관리된다.
 		// Context의 getBean메소드를 이용하여 가져올 수 있다.(파라미터의 클래스명은 소문자로 시작할 것)
 		MyController myController = (MyController) ctx.getBean("myController");
-		String hello = myController.helloWorld();
-		System.out.println(hello);
+		System.out.println("----- Primary Bean      -----");
+		System.out.println(myController.sayHello());
 		System.out.println("----- Property Inject   -----");
 		PropertyInjectedController propertyInjectedController = (PropertyInjectedController) ctx.getBean("propertyInjectedController");
 		System.out.println(propertyInjectedController.getGreeting());
