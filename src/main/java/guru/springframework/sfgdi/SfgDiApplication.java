@@ -4,7 +4,9 @@ import guru.springframework.sfgdi.controller.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
+@ComponentScan(basePackages = {"guru.springframework.sfgdi", "com.springframework.pet"})
 @SpringBootApplication
 public class SfgDiApplication {
 
