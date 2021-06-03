@@ -1,6 +1,9 @@
 package guru.springframework.sfgdi;
 
 import guru.springframework.sfgdi.controller.*;
+import guru.springframework.sfgdi.repositories.FakeDataSource;
+import guru.springframework.sfgdi.services.PrototypeBean;
+import guru.springframework.sfgdi.services.SingletonBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -34,6 +37,23 @@ public class SfgDiApplication {
 		System.out.println("----- Constructor Inject -----");
 		ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) ctx.getBean("constructorInjectedController");
 		System.out.println(constructorInjectedController.getGreeting());
+
+		System.out.println("----- Bean Scopes -----");
+		SingletonBean singletonBean1 = (SingletonBean) ctx.getBean("singletonBean");
+		SingletonBean singletonBean2 = (SingletonBean) ctx.getBean("singletonBean");
+		System.out.println(singletonBean1.getMyScope());
+		System.out.println(singletonBean2.getMyScope());
+
+		PrototypeBean prototypeBean1 = (PrototypeBean) ctx.getBean("prototypeBean");
+		PrototypeBean prototypeBean2 = (PrototypeBean) ctx.getBean("prototypeBean");
+		System.out.println(prototypeBean1.getMyScope());
+		System.out.println(prototypeBean2.getMyScope());
+
+		System.out.println("----- Fake data source -----");
+		FakeDataSource fakeDataSource = (FakeDataSource) ctx.getBean("fakeDataSource");
+		System.out.println(fakeDataSource.getUsername());
+		System.out.println(fakeDataSource.getPassword());
+		System.out.println(fakeDataSource.getJdbcurl());
 	}
 
 }
